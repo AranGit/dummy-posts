@@ -1,19 +1,23 @@
-import { useQuery } from "@tanstack/react-query";
+import { UseQueryResult, useQuery } from "@tanstack/react-query";
 import { createContext } from "react";
 import { PostData } from "../datas/postData";
-import { getPostById } from "../apis/jsonPlaceholderEndpoints";
-
+import { getCommentsByPostId, getPostById } from "../apis/jsonPlaceholderEndpoints";
+import { CommentData } from "../datas/commentData";
 
 export type PostContextValue = {
   isPending: boolean,
   error: Error | null,
   data: PostData | undefined,
+  getComments: (postId: string) => UseQueryResult<CommentData[], Error>
 }
 
 const defaultPostContextValue: PostContextValue = {
   isPending: false,
   error: null,
   data: undefined,
+  getComments: () => {
+    throw new Error();
+  }
 }
 
 export const PostContext = createContext<PostContextValue>(defaultPostContextValue);
@@ -26,18 +30,31 @@ function PostProvider({ id, children }: { id: string | undefined, children: Reac
       try {
         return id ? await getPostById(id) : undefined;
       } catch (error) {
-        console.error('Error fetching data:', error);
-        throw new Error('Failed to fetch data');
+        throw new Error('Failed to fetch post data');
       }
     },
   })
+
+  const getComments = (postId: string) => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    return useQuery<CommentData[]>({
+      queryKey: ['commentData', postId],
+      queryFn: async () => {
+        try {
+          return getCommentsByPostId(postId);
+        } catch (error) {
+          throw new Error('Failed to fetch comments data');
+        }
+      },
+    })
+  }
 
   const value = {
     isPending,
     error,
     data,
+    getComments
   }
-
 
   return (
     <PostContext.Provider value={value}>

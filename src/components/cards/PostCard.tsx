@@ -1,7 +1,8 @@
 import { useContext } from 'react'
-import { PostContext } from '../contexts/PostProvider';
-import Loading from './Loading';
-import ErrorWithMessage from './ErrorWithMessage';
+import Loading from '../Loading';
+import ErrorWithMessage from '../ErrorWithMessage';
+import { PostContext } from '../../contexts/PostProvider';
+import PostContent from '../PostContent';
 
 function PostCard() {
   const post = useContext(PostContext);
@@ -12,10 +13,7 @@ function PostCard() {
         post?.isPending ? <Loading /> :
           post?.error ? <ErrorWithMessage message={post.error.message} /> :
             (post?.data &&
-              <>
-                <h2>{post.data.title}</h2>
-                <p>{post.data.body}</p>
-              </>
+              <PostContent data={post.data} />
             )
       }
     </div>

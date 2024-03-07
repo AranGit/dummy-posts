@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { useQuery } from "@tanstack/react-query";
 import { createContext } from "react";
 import { PostData } from "../datas/postData";
@@ -40,19 +38,10 @@ function PostProvider({ id, children }: { id: string | undefined, children: Reac
     data,
   }
 
-  let content = children;
-
-  if (isPending) {
-    content = <>'Loading...'</>
-  }
-
-  if (error) {
-    content = <>`An error has occurred: ${error.message}`</>
-  }
 
   return (
     <PostContext.Provider value={value}>
-      {content}
+      {children}
     </PostContext.Provider>
   )
 }

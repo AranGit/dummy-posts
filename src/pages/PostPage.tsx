@@ -1,23 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import { getPostById } from '../apis/jsonPlaceholderEndpoints';
-import { useEffect } from 'react';
-
-interface PostData {
-  id: number,
-  userId: number,
-  title: string,
-  body: string
-}
-
-interface PostDataError {
-  message: string
-}
+import { PostData } from '../datas/postData';
 
 function PostPage() {
   const { id } = useParams();
 
-  const { isPending, error, data } = useQuery<PostData, PostDataError>({
+  const { isPending, error, data } = useQuery<PostData>({
     queryKey: ['postData', id],
     queryFn: async () => {
       try {

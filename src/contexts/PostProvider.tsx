@@ -28,7 +28,7 @@ function PostProvider({ id, children }: { id: string | undefined, children: Reac
     queryKey: ['postData', id],
     queryFn: async () => {
       try {
-        return id ? await getPostById(id) : undefined;
+        return id ? await getPostById(id) : new Error("Post ID can't be undefind");
       } catch (error) {
         throw new Error('Failed to fetch post data');
       }

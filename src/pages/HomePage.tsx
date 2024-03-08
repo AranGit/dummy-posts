@@ -1,7 +1,6 @@
 import PostSelectionForm from "../components/forms/PostSelectionForm";
 import PageLayout from "../components/layouts/PageLayout";
 
-
 function HomePage() {
   return (
     <PageLayout>

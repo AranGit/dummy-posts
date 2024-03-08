@@ -4,8 +4,8 @@ const wrapClassName = 'overflow-hidden whitespace-nowrap text-clip';
 
 function TextCollapse({ text }: { text: string }) {
   const [isMultiline, setIsMultiline] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
   const [isActive, setIsActive] = useState<boolean>(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const handleActive = useCallback(() => {
     setIsActive(!isActive)

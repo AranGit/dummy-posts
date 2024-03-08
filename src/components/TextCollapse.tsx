@@ -43,7 +43,7 @@ function TextCollapse({ text }: { text: string }) {
   return (
     <div className={`relative max-w-full ${textClassName}`} ref={containerRef}>
       <span>{text}</span>
-      <span hidden={!isMultiline} className={`text-[#72BFFF] bg-white cursor-pointer select-none ${activeClassName}`} onClick={handleActive}>
+      <span hidden={!isMultiline} className={`text-nowrap text-[#72BFFF] bg-white cursor-pointer select-none ${activeClassName}`} onClick={handleActive}>
         {activeText}
       </span>
     </div>

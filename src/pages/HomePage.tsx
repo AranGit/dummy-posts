@@ -1,11 +1,13 @@
 import PostSelectionForm from "../components/forms/PostSelectionForm";
+import PageLayout from "../components/layouts/PageLayout";
 
 
 function HomePage() {
   return (
-    <div>
+    <PageLayout>
+      <h3 className="text-center mb-6">Welcome to the Aran's test</h3>
       <PostSelectionForm />
-    </div>
+    </PageLayout>
   )
 }
 

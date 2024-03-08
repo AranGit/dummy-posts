@@ -1,7 +1,7 @@
 
 function ErrorWithMessage({ message }: { message: string }) {
   return (
-    <>`An error has occurred: ${message}`</>
+    <>An error has occurred: {message}</>
   )
 }
 

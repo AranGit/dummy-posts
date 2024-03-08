@@ -4,7 +4,7 @@ import CommentList from './CommentList';
 function PostContent({ data }: { data: PostData }) {
   return (
     <>
-      <h2>{data.title}</h2>
+      <h4 className='mb-3'><b>{data.title}</b></h4>
       <p>{data.body}</p>
       <CommentList />
       <textarea

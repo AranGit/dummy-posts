@@ -38,7 +38,7 @@ function PostProvider({ id, children }: { id: string | undefined, children: Reac
   const getComments = (postId: string) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     return useQuery<CommentData[]>({
-      queryKey: ['commentData', postId],
+      queryKey: ['commentsData', postId],
       queryFn: async () => {
         try {
           return getCommentsByPostId(postId);

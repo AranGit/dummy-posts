@@ -1,9 +1,10 @@
-import React from 'react'
+import PostSelectionForm from "../components/forms/PostSelectionForm";
+
 
 function HomePage() {
   return (
     <div>
-      Welcome to Dummy Posts
+      <PostSelectionForm />
     </div>
   )
 }

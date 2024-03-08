@@ -35,8 +35,7 @@ function PostProvider({ id, children }: { id: string | undefined, children: Reac
     },
   })
 
-  const getComments = (postId: string) => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
+  const GetComments = (postId: string) => {
     return useQuery<CommentData[]>({
       queryKey: ['commentsData', postId],
       queryFn: async () => {
@@ -53,7 +52,7 @@ function PostProvider({ id, children }: { id: string | undefined, children: Reac
     isPending,
     error,
     data,
-    getComments
+    getComments: GetComments
   }
 
   return (

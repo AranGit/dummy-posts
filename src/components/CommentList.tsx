@@ -15,11 +15,11 @@ function CommentList() {
       {comments?.isPending ? <Loading /> :
         comments?.error ? <ErrorWithMessage message={comments.error.message} /> :
           (comments?.data &&
-            comments.data.map((commentData, index) =>
-              <div className='mt-4' key={`comment-card${index}`}>
-                <CommentCard data={commentData} />
-              </div>
-            )
+            <div className='flex flex-col gap-4 pt-5 pb-10 pl-2' >
+              {comments.data.map((commentData, index) =>
+                <CommentCard key={`comment-card${index}`} data={commentData} />
+              )}
+            </div>
           )
       }
     </div>

@@ -9,7 +9,7 @@ function CommentCard({ data }: { data: CommentData }) {
         <UserAvatar displayName={data.email} />
       </div>
       <div className="grid grow shrink basis-[300px]">
-        <b className="my-2">{data.email}</b>
+        <b className="my-2 overflow-hidden whitespace-nowrap text-ellipsis">{data.email}</b>
         <TextCollapse text={data.body} />
       </div>
     </div>

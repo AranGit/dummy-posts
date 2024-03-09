@@ -3,7 +3,7 @@ import { useCallback, useEffect, useRef, useState } from "react"
 const wrapClassName = 'overflow-hidden whitespace-nowrap text-clip';
 
 function TextCollapse({ text }: { text: string }) {
-  const [isMultiline, setIsMultiline] = useState(false);
+  const [isMultiline, setIsMultiline] = useState<boolean>(false);
   const [isActive, setIsActive] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -19,7 +19,7 @@ function TextCollapse({ text }: { text: string }) {
         const lineHeight = parseInt(computedStyle.getPropertyValue('line-height').replace('px', ''));
         const height = parseInt(computedStyle.getPropertyValue('height').replace('px', ''));
 
-        //Computed from container's height and front size to make sure this feature still working if font size changed
+        //Computed from container's height and line height to make sure this feature still working if line height changed
         //Also padding if needed
         (height > (lineHeight + (lineHeight / 2))) ? setIsMultiline(true) : setIsMultiline(false);
 
